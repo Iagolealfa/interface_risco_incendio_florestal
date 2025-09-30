@@ -17,7 +17,6 @@ st.markdown("---")
 
 # === CONFIGURAÇÃO GCS ===
 BUCKET_NAME = "bucket-risco-fogo"
-CIDADES = ["Cotriguaçu", "Palmeiras"]
 
 # Inicia cliente do GCS
 client = storage.Client()
@@ -25,9 +24,35 @@ bucket = client.bucket(BUCKET_NAME)
 
 # --- Mapeamento estados -> cidades ---
 ESTADOS_CIDADES = {
-    "Mato Grosso": ["Cotriguaçu"],
-    "Bahia": ["Palmeiras"]
+    "Acre": ["Rio Branco", "Cruzeiro do Sul", "Senador Guiomard", "Tarauacá", "Feijó"],
+    "Alagoas": ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
+    "Amapá": ["Macapá", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari", "Mazagão", "Porto Grande", "Pedra Branca do Amapari", "Tartarugalzinho", "Calçoene"],
+    "Amazonas": ["Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari"],
+    "Bahia": ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
+    "Ceará": ["Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanaú", "Sobral"],
+    "Distrito Federal": ["Brasília", "Taguatinga", "Ceilândia", "Sobradinho", "Planaltina", "Gama", "Samambaia", "Recanto das Emas", "Taguatinga Sul", "Águas Claras"],
+    "Espírito Santo": ["Vitória", "Vila Velha", "Serra", "Cariacica", "Guarapari"],
+    "Goiás": ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia"],
+    "Maranhão": ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
+    "Minas Gerais": ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Montes Claros"],
+    "Mato Grosso": ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Cáceres", "Cotriguaçu"],
+    "Mato Grosso do Sul": ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã"],
+    "Pará": ["Belém", "Ananindeua", "Santarém", "Marabá", "Parauapebas"],
+    "Paraíba": ["João Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux", "Sousa", "Guarabira", "Cabedelo", "Cajazeiras", "Mamanguape"],
+    "Paraná": ["Curitiba", "Londrina", "Maringá", "Foz do Iguaçu", "Ponta Grossa"],
+    "Pernambuco": ["Recife", "Jaboatão dos Guararapes", "Olinda", "Caruaru", "Petrolina"],
+    "Piauí": ["Teresina", "Parnaíba", "Picos", "Piripiri", "Campo Maior"],
+    "Rio de Janeiro": ["Rio de Janeiro", "Niterói", "Nova Iguaçu", "Duque de Caxias", "São Gonçalo"],
+    "Rio Grande do Norte": ["Natal", "Mossoró", "Parnamirim", "São Gonçalo do Amarante", "Caicó"],
+    "Rio Grande do Sul": ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria"],
+    "Rondônia": ["Porto Velho", "Ji-Paraná", "Ariquemes", "Cacoal", "Vilhena"],
+    "Roraima": ["Boa Vista", "Pacaraima", "Caracaraí", "Mucajaí", "Cantá"],
+    "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
+    "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
+    "São Paulo": ["São Paulo", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
+    "Tocantins": ["Palmas", "Araguaína", "Gurupi", "Paraíso do Tocantins", "Porto Nacional", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
+
 
 # --- Selectbox de Estado ---
 estado_selecionado = st.selectbox(
