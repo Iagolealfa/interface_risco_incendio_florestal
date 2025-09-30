@@ -12,7 +12,7 @@ arquivos_excel = []
 
 # === CONFIGURAÇÃO STREAMLIT ===
 st.set_page_config(layout="wide")
-st.title('Diagramas de Risco de Incêndio')
+st.title('Diagramas de Risco de Incêndio Florestal')
 st.markdown("---")
 
 # === CONFIGURAÇÃO GCS ===
@@ -125,7 +125,7 @@ else:
         arquivos_excel.append(nome_arquivo)
         for nome_arquivo in arquivos_excel:
             nome_local = nome_arquivo.replace("Risco_", "").replace(".xlsx", "")
-            st.subheader(f'Diagrama de Risco de Incêndio para {nome_local.capitalize()}')
+            st.subheader(f'Diagrama de Risco de Incêndio Florestal para {nome_local.capitalize()}')
 
             # Baixa o arquivo do bucket
             blob = bucket.blob(nome_arquivo)
