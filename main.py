@@ -145,98 +145,101 @@ def calc_ttr(df):
 if not cidades_escolhidas:
     st.warning("Selecione pelo menos uma cidade para visualizar os gráficos.")
 else:
-    for cidade in cidades_escolhidas:    
+    # O loop deve ser diretamente sobre cada cidade escolhida
+    for cidade in cidades_escolhidas: 
+        
+        # Define o nome do arquivo para a cidade ATUAL do loop
         nome_arquivo = f"Risco_{cidade}.xlsx"
-        arquivos_excel.append(nome_arquivo)
-        for nome_arquivo in arquivos_excel:
-            nome_local = nome_arquivo.replace("Risco_", "").replace(".xlsx", "")
-            st.subheader(f'Diagrama de Risco de Incêndio Florestal para {nome_local.capitalize()}')
+        nome_local = cidade # Use a variável 'cidade' diretamente
+        
+        st.subheader(f'Diagrama de Risco de Incêndio Florestal para {nome_local.capitalize()}')
 
-            # Baixa o arquivo do bucket
-            blob = bucket.blob(nome_arquivo)
-            if not blob.exists():
-                st.error(f"Arquivo **{nome_arquivo}** não encontrado no bucket `{BUCKET_NAME}`.")
-                continue
-            
-            dados = blob.download_as_bytes()
-            df = pd.read_excel(io.BytesIO(dados))
+        # Baixa o arquivo do bucket
+        blob = bucket.blob(nome_arquivo)
+        if not blob.exists():
+            st.error(f"Arquivo **{nome_arquivo}** não encontrado no bucket `{BUCKET_NAME}`.")
+            continue
+        
+        dados = blob.download_as_bytes()
+        df = pd.read_excel(io.BytesIO(dados))
 
-            # Normaliza colunas
-            df.columns = ['data', 'risco_fogo']
-            df['data'] = pd.to_datetime(df['data'])
-            df = df.sort_values('data')
+        # Normaliza colunas
+        df.columns = ['data', 'risco_fogo']
+        df['data'] = pd.to_datetime(df['data'])
+        df = df.sort_values('data')
 
-            # Calcula VR7 e TTR
-            df['VR7'] = df['risco_fogo'].rolling(window=7, min_periods=7).mean().clip(lower=0)
-            df = calc_ttr(df)
-            
-            df_plot = df.dropna(subset=['risco_fogo', 'ICTR14']).copy()
-            if df_plot.empty:
-                st.warning(f"O arquivo {nome_arquivo} não contém dados suficientes para gerar o diagrama.")
-                continue
-            
-            df_plot['data'] = df_plot['data'].dt.strftime('%d-%m-%Y')
-            df_plot['Nivel_Risco'] = pd.cut(df_plot['risco_fogo'], bins=limites_risco, labels=nomes_risco, right=False)
+        # Calcula VR7 e TTR
+        df['VR7'] = df['risco_fogo'].rolling(window=7, min_periods=7).mean().clip(lower=0)
+        df = calc_ttr(df)
+        
+        df_plot = df.dropna(subset=['risco_fogo', 'ICTR14']).copy()
+        if df_plot.empty:
+            st.warning(f"O arquivo {nome_arquivo} não contém dados suficientes para gerar o diagrama.")
+            continue
+        
+        df_plot['data'] = df_plot['data'].dt.strftime('%d-%m-%Y')
+        df_plot['Nivel_Risco'] = pd.cut(df_plot['risco_fogo'], bins=limites_risco, labels=nomes_risco, right=False)
 
-            # === GRÁFICO ===
-            fig = go.Figure()
-            xx = np.linspace(0, 1.20, 500)
-            yy = np.linspace(0, 1.60, 500)
-            X, Y = np.meshgrid(xx, yy)
-            EPG_grid = Y * X + (X * 0.3)
-            EPG_norm = np.clip(EPG_grid / 1, 0, 1)
-            paleta = [(0.00, '#4CAF50'), (0.30, '#FFA500'), (1.00, '#D32F2F')]
-            plotly_colorscale = [(p, c) for p, c in paleta]
-            fig.add_trace(go.Heatmap(x=xx, y=yy, z=EPG_norm, colorscale=plotly_colorscale, showscale=False, opacity=0.68, hoverinfo='none'))
+        # === GRÁFICO ===
+        fig = go.Figure()
+        xx = np.linspace(0, 1.20, 500)
+        yy = np.linspace(0, 1.60, 500)
+        X, Y = np.meshgrid(xx, yy)
+        EPG_grid = Y * X + (X * 0.3)
+        EPG_norm = np.clip(EPG_grid / 1, 0, 1)
+        paleta = [(0.00, '#4CAF50'), (0.30, '#FFA500'), (1.00, '#D32F2F')]
+        plotly_colorscale = [(p, c) for p, c in paleta]
+        fig.add_trace(go.Heatmap(x=xx, y=yy, z=EPG_norm, colorscale=plotly_colorscale, showscale=False, opacity=0.68, hoverinfo='none'))
 
-            # Linha de trajetória
-            fig.add_trace(go.Scatter(
-                x=df_plot['risco_fogo'],
-                y=df_plot['ICTR14'],
-                mode='lines',
-                line=dict(color='black', width=1.5, dash='dash'),
-                hoverinfo='none',
-                showlegend=False
-            ))
+        # Linha de trajetória
+        fig.add_trace(go.Scatter(
+            x=df_plot['risco_fogo'],
+            y=df_plot['ICTR14'],
+            mode='lines',
+            line=dict(color='black', width=1.5, dash='dash'),
+            hoverinfo='none',
+            showlegend=False
+        ))
 
-            # Pontos com cor do nível
-            for nivel in nomes_risco:
-                df_nivel = df_plot[df_plot['Nivel_Risco'] == nivel]
-                if not df_nivel.empty:
-                    fig.add_trace(go.Scatter(
-                        x=df_nivel['risco_fogo'],
-                        y=df_nivel['ICTR14'],
-                        mode='markers',
-                        marker=dict(color=mapa_de_cores[nivel], size=10, line=dict(width=1, color='black')),
-                        name=f'Nível {nivel}',
-                        hoverinfo='text',
-                        hovertext=[
-                            f"<b>Data:</b> {data}<br><b>Risco de Fogo:</b> {rf}<br><b>TTR:</b> {ttr}<br><b>Nível:</b> {nivel}"
-                            for data, rf, ttr in zip(df_nivel['data'], df_nivel['risco_fogo'], df_nivel['ICTR14'])
-                        ],
-                        showlegend=False
-                    ))
-
-            # Legenda fixa
-            for nivel in nomes_risco:
+        # Pontos com cor do nível
+        for nivel in nomes_risco:
+            df_nivel = df_plot[df_plot['Nivel_Risco'] == nivel]
+            if not df_nivel.empty:
                 fig.add_trace(go.Scatter(
-                    x=[None], y=[None],
+                    x=df_nivel['risco_fogo'],
+                    y=df_nivel['ICTR14'],
                     mode='markers',
                     marker=dict(color=mapa_de_cores[nivel], size=10, line=dict(width=1, color='black')),
                     name=f'Nível {nivel}',
+                    hoverinfo='text',
+                    hovertext=[
+                        f"<b>Data:</b> {data}<br><b>Risco de Fogo:</b> {rf}<br><b>TTR:</b> {ttr}<br><b>Nível:</b> {nivel}"
+                        for data, rf, ttr in zip(df_nivel['data'], df_nivel['risco_fogo'], df_nivel['ICTR14'])
+                    ],
+                    showlegend=False
                 ))
 
-            # Layout
-            fig.update_layout(
-                title=dict(text=f'<b>{nome_local.capitalize()}</b>', x=0.5, font=dict(size=18)),
-                xaxis=dict(title='Risco de fogo observado (RF)', range=[0, 1.20], showgrid=False, zeroline=False, showline=False,),
-                yaxis=dict(title='Tendência temporal de risco (TTR)', range=[0, 1.60], showgrid=False, zeroline=False, showline=False,),
-                plot_bgcolor='white',
-                width=800, height=500,
-                legend_title_text='<b>Níveis de Risco</b>',
-                legend=dict(font=dict(color="black")),
-            )
-            
-            st.plotly_chart(fig, use_container_width=True, key=f"grafico_{cidade}")
+        # Legenda fixa
+        for nivel in nomes_risco:
+            fig.add_trace(go.Scatter(
+                x=[None], y=[None],
+                mode='markers',
+                marker=dict(color=mapa_de_cores[nivel], size=10, line=dict(width=1, color='black')),
+                name=f'Nível {nivel}',
+            ))
 
-            st.markdown("---")
+        # Layout
+        fig.update_layout(
+            title=dict(text=f'<b>{nome_local.capitalize()}</b>', x=0.5, font=dict(size=18)),
+            xaxis=dict(title='Risco de fogo observado (RF)', range=[0, 1.20], showgrid=False, zeroline=False, showline=False,),
+            yaxis=dict(title='Tendência temporal de risco (TTR)', range=[0, 1.60], showgrid=False, zeroline=False, showline=False,),
+            plot_bgcolor='white',
+            width=800, height=500,
+            legend_title_text='<b>Níveis de Risco</b>',
+            legend=dict(font=dict(color="black")),
+        )
+        
+        # Use o nome da cidade no `key` para garantir unicidade
+        st.plotly_chart(fig, use_container_width=True, key=f"grafico_{cidade}")
+
+        st.markdown("---")
