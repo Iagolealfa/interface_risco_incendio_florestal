@@ -26,13 +26,14 @@ bucket = client.bucket(BUCKET_NAME)
 ESTADOS_CIDADES = {
     "Acre": ["Rio Branco", "Cruzeiro do Sul", "Senador Guiomard", "Tarauacá", "Feijó"],
     "Alagoas": ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
-    "Amapá": ["Macapá", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari", "Mazagão", "Porto Grande", "Pedra Branca do Amapari", "Tartarugalzinho", "Calçoene"],
+    "Amapá": ["Amapá","Calçoene","Macapá", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
+              , "Mazagão", "Porto Grande", "Pedra Branca do Amapari"],
     "Amazonas": ["Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari"],
     "Bahia": ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
     "Ceará": ["Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanaú", "Sobral"],
     "Distrito Federal": ["Brasília", "Taguatinga", "Ceilândia", "Sobradinho", "Planaltina", "Gama", "Samambaia", "Recanto das Emas", "Taguatinga Sul", "Águas Claras"],
     "Espírito Santo": ["Vitória", "Vila Velha", "Serra", "Cariacica", "Guarapari"],
-    "Goiás": ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia"],
+    "Goiás": ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Cavalcante"],
     "Maranhão": ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
     "Minas Gerais": ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Montes Claros"],
     "Mato Grosso": ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Cáceres", "Cotriguaçu"],
@@ -49,7 +50,7 @@ ESTADOS_CIDADES = {
     "Roraima": ["Boa Vista", "Pacaraima", "Caracaraí", "Mucajaí", "Cantá"],
     "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
     "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
-    "São Paulo": ["São Paulo", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
+    "São Paulo": ["São Paulo","Bady Bassitt","José Bonifácio","Araraçatuba","São José do Rio Preto", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
     "Tocantins": ["Palmas", "Araguaína", "Gurupi", "Paraíso do Tocantins", "Porto Nacional", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
 
