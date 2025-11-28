@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from google.cloud import storage 
+from google.oauth2 import service_account
 import io
 from dotenv import load_dotenv
 
@@ -19,7 +20,10 @@ st.markdown("---")
 BUCKET_NAME = "bucket-risco-fogo"
 
 # Inicia cliente do GCS
-client = storage.Client()
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_key"]
+)
+client = storage.Client(credentials=credentials)
 bucket = client.bucket(BUCKET_NAME)
 
 # --- Mapeamento estados -> cidades ---
