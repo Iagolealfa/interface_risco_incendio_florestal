@@ -29,14 +29,14 @@ bucket = client.bucket(BUCKET_NAME)
 # --- Mapeamento estados -> cidades ---
 ESTADOS_CIDADES = {
     "Acre": ["Senador Guiomard", "Feijó"],
-    "Alagoas": ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
-    "Amapá": ["Amapá","Calçoene","Macapá", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
-              , "Mazagão", "Porto Grande", "Pedra Branca do Amapari"],
-    "Amazonas": ["Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari"],
+    "Alagoas": ["Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
+    "Amapá": ["Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
+              , "Mazagão"],
+    "Amazonas": ["Manaus","Itacoatiara"],
     "Bahia": ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
-    "Ceará": ["Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanaú", "Sobral"],
-    "Distrito Federal": ["Brasília", "Taguatinga", "Ceilândia", "Sobradinho", "Planaltina", "Gama", "Samambaia", "Recanto das Emas", "Taguatinga Sul", "Águas Claras"],
-    "Espírito Santo": ["Vitória", "Vila Velha", "Serra", "Cariacica", "Guarapari"],
+    "Ceará": [ "Juazeiro do Norte", "Maracanaú", "Sobral"],
+    "Distrito Federal": ["Ceilândia", "Planaltina", "Gama", "Taguatinga Sul"],
+    "Espírito Santo": ["Serra", "Cariacica", "Guarapari"],
     "Goiás": ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Cavalcante"],
     "Maranhão": ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
     "Minas Gerais": ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Montes Claros"],
