@@ -28,7 +28,7 @@ bucket = client.bucket(BUCKET_NAME)
 
 # --- Mapeamento estados -> cidades ---
 ESTADOS_CIDADES = {
-    "Acre": ["Rio Branco", "Cruzeiro do Sul", "Senador Guiomard", "Tarauacá", "Feijó"],
+    "Acre": ["Senador Guiomard", "Feijó"],
     "Alagoas": ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
     "Amapá": ["Amapá","Calçoene","Macapá", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
               , "Mazagão", "Porto Grande", "Pedra Branca do Amapari"],
