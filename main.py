@@ -45,7 +45,7 @@ ESTADOS_CIDADES = {
     "Pará": ["Belém", "Ananindeua", "Santarém", "Marabá", "Parauapebas"],
     "Paraíba": ["João Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux", "Sousa", "Guarabira", "Cabedelo", "Cajazeiras", "Mamanguape"],
     "Paraná": ["Curitiba", "Londrina", "Maringá", "Foz do Iguaçu", "Ponta Grossa"],
-    "Pernambuco": ["Recife", "Jaboatão dos Guararapes", "Olinda", "Caruaru", "Petrolina"],
+    "Pernambuco": ["Serra Talhada", "Ouricuri", "Petrolina", "Santa Maria da Boa Vista", "Lagoa Grande"],
     "Piauí": ["Teresina", "Parnaíba", "Picos", "Piripiri", "Campo Maior"],
     "Rio de Janeiro": ["Rio de Janeiro", "Niterói", "Nova Iguaçu", "Duque de Caxias", "São Gonçalo"],
     "Rio Grande do Norte": ["Natal", "Mossoró", "Parnamirim", "São Gonçalo do Amarante", "Caicó"],
