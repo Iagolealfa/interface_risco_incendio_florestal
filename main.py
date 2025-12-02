@@ -33,14 +33,14 @@ ESTADOS_CIDADES = {
     "Amapá": ["Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
               , "Mazagão"],
     "Amazonas": ["Manaus","Itacoatiara"],
-    "Bahia": ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
+    "Bahia": ["Cocos", "Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
     "Ceará": [ "Juazeiro do Norte", "Maracanaú", "Sobral"],
     "Distrito Federal": ["Ceilândia", "Planaltina", "Gama", "Taguatinga Sul"],
     "Espírito Santo": ["Serra", "Cariacica", "Guarapari"],
     "Goiás": ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Cavalcante"],
-    "Maranhão": ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
+    "Maranhão": ["Barra do Corda", "Mirador", "Grajau", "Alto Parnaiba", "Carolina"],
     "Minas Gerais": ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Montes Claros"],
-    "Mato Grosso": ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Cáceres", "Cotriguaçu"],
+    "Mato Grosso": ["Colniza", "Nova Maringa", "Paranatinga", "Sinop", "Cáceres", "Cotriguaçu"],
     "Mato Grosso do Sul": ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã"],
     "Pará": ["Belém", "Ananindeua", "Santarém", "Marabá", "Parauapebas"],
     "Paraíba": ["João Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux", "Sousa", "Guarabira", "Cabedelo", "Cajazeiras", "Mamanguape"],
@@ -55,7 +55,7 @@ ESTADOS_CIDADES = {
     "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
     "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
     "São Paulo": ["São Paulo","Bady Bassitt","José Bonifácio","Araraçatuba","São José do Rio Preto", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
-    "Tocantins": ["Palmas", "Araguaína", "Gurupi", "Paraíso do Tocantins", "Porto Nacional", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
+    "Tocantins": ["Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
 
 
