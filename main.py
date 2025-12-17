@@ -244,7 +244,6 @@ else:
             legend=dict(font=dict(color="black")),
         )
         
-        # Use o nome da cidade no `key` para garantir unicidade
         st.plotly_chart(fig, use_container_width=True, key=f"grafico_{cidade}")
 
         st.markdown("---")
