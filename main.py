@@ -55,7 +55,7 @@ ESTADOS_CIDADES = {
     "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
     "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
     "São Paulo": ["São Paulo","Bady Bassitt","José Bonifácio","Araraçatuba","São José do Rio Preto", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
-    "Tocantins": ["Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
+    "Tocantins": ["Mateiros","Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
 
 
@@ -185,6 +185,11 @@ else:
         df_plot['data'] = df_plot['data'].dt.strftime('%d-%m-%Y')
         df_plot['Nivel_Risco'] = pd.cut(df_plot['risco_fogo'], bins=limites_risco, labels=nomes_risco, right=False)
 
+        # Agrupa dados com mesmo Risco(X) e TTR(Y) e junta as datas numa única string com quebra de linha
+        df_agrupado = df_plot.groupby(['risco_fogo', 'ICTR14', 'Nivel_Risco'], observed=True)['data'].apply(
+            lambda x: '<br>'.join(x)
+        ).reset_index()
+
         # === GRÁFICO ===
         fig = go.Figure()
         xx = np.linspace(0, 1.20, 500)
@@ -208,7 +213,7 @@ else:
 
         # Pontos com cor do nível
         for nivel in nomes_risco:
-            df_nivel = df_plot[df_plot['Nivel_Risco'] == nivel]
+            df_nivel = df_agrupado[df_agrupado['Nivel_Risco'] == nivel]
             if not df_nivel.empty:
                 fig.add_trace(go.Scatter(
                     x=df_nivel['risco_fogo'],
@@ -218,8 +223,8 @@ else:
                     name=f'Nível {nivel}',
                     hoverinfo='text',
                     hovertext=[
-                        f"<b>Data:</b> {data}<br><b>Risco de Fogo:</b> {rf}<br><b>TTR:</b> {ttr}<br><b>Nível:</b> {nivel}"
-                        for data, rf, ttr in zip(df_nivel['data'], df_nivel['risco_fogo'], df_nivel['ICTR14'])
+                        f"<b>Nível:</b> {nivel}<br><b>Risco de Fogo:</b> {rf}<br><b>TTR:</b> {ttr}<br><b>Datas:</b><br>{datas}"
+                        for rf, ttr, datas in zip(df_nivel['risco_fogo'], df_nivel['ICTR14'], df_nivel['data'])
                     ],
                     showlegend=False
                 ))
