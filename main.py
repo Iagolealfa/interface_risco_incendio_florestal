@@ -55,7 +55,7 @@ ESTADOS_CIDADES = {
     "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
     "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
     "São Paulo": ["São Paulo","Bady Bassitt","José Bonifácio","Araraçatuba","São José do Rio Preto", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
-    "Tocantins": ["Lagoa da Confusao Maio 2025","Pium Maio 2025","Mateiros Maio 2025","Mateiros","Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
+    "Tocantins": ["Lagoa da Confusao(Maio 2025)","Pium Maio(Maio 2025)","Mateiros(Maio 2025)","Mateiros","Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
 
 
