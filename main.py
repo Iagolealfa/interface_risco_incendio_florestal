@@ -31,7 +31,7 @@ bucket = client.bucket(BUCKET_NAME)
 ESTADOS_CIDADES = {
     "Acre": ["Senador Guiomard", "Feijó"],
     "Alagoas": ["Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
-    "Amapá": ["Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
+    "Amapá": ["Mazagão(Estudo de Caso-Setembro 2025)","Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
               , "Mazagão"],
     "Amazonas": ["Manaus","Itacoatiara"],
     "Bahia": ["Cocos", "Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
@@ -56,7 +56,7 @@ ESTADOS_CIDADES = {
     "Santa Catarina": ["Florianópolis", "Joinville", "Blumenau", "Criciúma", "Chapecó"],
     "Sergipe": ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Estância"],
     "São Paulo": ["São Paulo","Bady Bassitt","José Bonifácio","Araraçatuba","São José do Rio Preto", "Campinas", "São Bernardo do Campo", "Santo André", "Guarulhos", "Ribeirão Preto", "Sorocaba", "São José dos Campos", "Bauru", "Piracicaba"],
-    "Tocantins": ["Lagoa da Confusao(Estudo de Caso-Maio 2025)","Pium(Estudo de Caso-Maio 2025)","Mateiros(Estudo de Caso-Maio 2025)","Mateiros","Lagoa da Confusao","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
+    "Tocantins": ["Lagoa da Confusão(Estudo de Caso-Maio 2025)","Pium(Estudo de Caso-Maio 2025)","Mateiros(Estudo de Caso-Maio 2025)","Mateiros","Lagoa da Confusão","Formoso do Araguaia","Pium", "Paraíso do Tocantins", "Colinas do Tocantins", "Guaraí", "Araguatins", "Augustinópolis", "Lavandeira"]
 }
 
 
