@@ -14,6 +14,7 @@ arquivos_excel = []
 # === CONFIGURAÇÃO STREAMLIT ===
 st.set_page_config(layout="wide")
 st.title('Diagramas de Risco de Incêndio Florestal')
+st.info("ℹ️ **Informação:** Este aplicativo gera diagramas de risco de incêndio florestal dos últimos 30 dias.")
 st.markdown("---")
 
 # === CONFIGURAÇÃO GCS ===
