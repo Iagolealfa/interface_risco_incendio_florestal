@@ -31,7 +31,7 @@ bucket = client.bucket(BUCKET_NAME)
 ESTADOS_CIDADES = {
     "Acre": ["Senador Guiomard", "Feijó"],
     "Alagoas": ["Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
-    "Amapá": ["Mazagão(Estudo de Caso-Setembro 2025)","Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
+    "Amapá": ["Mazagão(Estudo de Caso-Setembro 2025)", "Tartarugalzinho(Estudo de Caso-Setembro 2025)","Serra do Navio(Estudo de Caso-Setembro 2025)","Amapá","Calçoene", "Tartarugalzinho","Serra do Navio", "Santana", "Laranjal do Jari", "Oiapoque", "Vitória do Jari"
               , "Mazagão"],
     "Amazonas": ["Manaus","Itacoatiara"],
     "Bahia": ["Cocos", "Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Itabuna"],
