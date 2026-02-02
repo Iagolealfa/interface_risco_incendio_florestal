@@ -241,7 +241,7 @@ else:
 
         # Layout
         fig.update_layout(
-            title=dict(text=f'<b>{nome_local.capitalize()}</b>', x=0.5, font=dict(size=18)),
+            title=dict(text=f'<b>{nome_local.capitalize()}</b>', x=0.4, font=dict(size=18)),
             xaxis=dict(title='Risco de fogo observado (RF)', range=[0, 1.20], showgrid=False, zeroline=False, showline=False,),
             yaxis=dict(title='Tendência temporal de risco (TTR)', range=[0, 1.60], showgrid=False, zeroline=False, showline=False,),
             plot_bgcolor='white',
